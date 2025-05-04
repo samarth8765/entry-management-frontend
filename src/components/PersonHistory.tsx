@@ -59,7 +59,7 @@ export const PersonHistory = () => {
             <h2 className="text-2xl font-bold mb-4">Person History</h2>
             <form className="space-y-4 mb-4" onSubmit={handleFetch}>
                 <div>
-                    <label htmlFor="personId" className="block text-sm font-medium text-gray-700">Person ID</label>
+                    <label htmlFor="personId" className="block text-sm font-medium text-gray-700">Person ID <span className='font-bold'>(Note: Please create a new person from postman and copy the personId) </span></label>
                     <input
                         type="text"
                         id="personId"

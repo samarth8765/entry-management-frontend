@@ -72,7 +72,7 @@ export const EntryExitForm = ({ setPersons }: { setPersons: (persons: Person[]) 
             <form className="space-y-4">
                 <div>
                     <label htmlFor="personId" className="block text-sm font-medium text-gray-700">
-                        Person ID
+                        Person ID  <span className='font-bold'>(Note: Please create a new person from postman and copy the personId) </span>
                     </label>
                     <input
                         type="text"
