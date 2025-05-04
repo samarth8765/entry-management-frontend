@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { getAnalytics } from '../services/api';
 import type { Analytics as AnalyticsType } from '../types/api';
+import { FormatHour } from '../utils/dateTime';
 
 export const Analytics = () => {
     const [analytics, setAnalytics] = useState<AnalyticsType | null>(null);
@@ -30,12 +31,6 @@ export const Analytics = () => {
 
         fetchAnalytics();
     }, []);
-
-    const formatHour = (hour: number) => {
-        const period = hour >= 12 ? 'PM' : 'AM';
-        const hour12 = hour % 12 === 0 ? 12 : hour % 12;
-        return `${hour12} ${period}`;
-    };
 
     if (loading) {
         return <div className="text-center py-4">Loading...</div>;
@@ -70,11 +65,11 @@ export const Analytics = () => {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
                         <h3 className="text-lg font-semibold mb-2">Peak Entry Time</h3>
-                        <p className="text-lg">{formatHour(analytics.peakEntryTime.hour)} ({analytics.peakEntryTime.count} entries)</p>
+                        <p className="text-lg">{FormatHour(analytics.peakEntryTime.hour)} ({analytics.peakEntryTime.count} entries)</p>
                     </div>
                     <div>
                         <h3 className="text-lg font-semibold mb-2">Peak Exit Time</h3>
-                        <p className="text-lg">{formatHour(analytics.peakExitTime.hour)} ({analytics.peakExitTime.count} exits)</p>
+                        <p className="text-lg">{FormatHour(analytics.peakExitTime.hour)} ({analytics.peakExitTime.count} exits)</p>
                     </div>
                 </div>
             </div>
